@@ -4,7 +4,7 @@
         "type": "Feature",
         "properties": {
             "title": "Puskesmas",
-            "description": "<strong>A Little Night Music</strong><p>The Arlington Player's production of Stephen Sondheim's  <a href=\"http://www.thearlingtonplayers.org/drupal-6.20/node/4661/show\" target=\"_blank\" title=\"Opens in a new window\"><em>A Little Night Music</em></a> comes to the Kogod Cradle at The Mead Center for American Theater (1101 6th Street SW) this weekend and next. 8:00 p.m.</p>"
+            "description": "<strong>Puskesmas</strong><p>Pelayanan Kesahatan secara umum. Buka dari jam 09.00-13.00</p>"
         },
         "geometry": {
             "type": "Point",
