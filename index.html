@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Add a GeoJSON line</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 10px;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .mapboxgl-popup {
+      max-width: 400px;
+      font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2VraW5neCIsImEiOiJjazZsdW1mZWYwajUxM21sOW02NGN1bzIwIn0.p2DTJ6_dk2UGo3t7YJIPtQ';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [115.115838, -8.8308757],
+      zoom: 13
+    });
+
+    map.on('load', function () {
+      $.getJSON('pecatu.json', function (geojson) {
+        map.addSource('pecatu', {
+          type: 'geojson',
+          data: geojson
+        });
+        map.addLayer({
+          'id': 'pecatu-fill',
+          'type': 'fill',
+          'source': 'pecatu',
+          'layout': {},
+          'paint': {
+            'fill-color': '#627BC1',
+            'fill-opacity': 0.3
+          }
+        });
+        map.addLayer({
+          'id': 'pecatu-border',
+          'type': 'line',
+          'source': 'pecatu',
+          'layout': {},
+          'paint': {
+            'line-color': '#627BC1',
+            'line-width': 2
+          }
+        })
+      });
+
+      map.loadImage('cat.png', function(error, image) {
+        if(error) throw error;
+        map.addImage('marker', image);
+      })
+
+      $.getJSON('faskes.json', function(faskes) {
+        map.addSource('faskes', {
+          type: 'geojson',
+          data: faskes
+        });
+
+        map.addLayer({
+          'id': 'marker-faskes',
+          'type': 'symbol',
+          'source': 'faskes',
+          'layout': {
+            'icon-image': 'marker',
+            'icon-size': 0.045,
+            'icon-allow-overlap': true,
+            'text-field': '{title}',
+            'text-size': 11,
+            'text-offset': [0, 1.5]
+          },
+          'paint': {
+            'text-color': '#202',
+            'text-halo-color': '#fff',
+            'text-halo-width': 2
+          }
+        })
+      })
+    });
+    
+  map.on('click', 'marker-faskes', function (e) {
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    var description = e.features[0].properties.description;
+
+    // Ensure that if the map is zoomed out such that multiple
+    // copies of the feature are visible, the popup appears
+    // over the copy being pointed to.
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+
+    new mapboxgl.Popup()
+    .setLngLat(coordinates)
+    .setHTML(description)
+    .addTo(map);
+  });
+
+  // Change the cursor to a pointer when the mouse is over the places layer.
+  map.on('mouseenter', 'marker-faskes', function () {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'marker-faskes', function () {
+    map.getCanvas().style.cursor = '';
+  });
+
+  </script>
+
+</body>
+
+</html>
