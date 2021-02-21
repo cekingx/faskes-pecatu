@@ -4,8 +4,8 @@
         {
             "type": "Feature",
             "properties": {
-                "title": "Puskesmas",
-                "description": "<strong>Puskesmas</strong><p>Pelayanan Kesahatan secara umum. Buka dari jam 09.00-13.00</p>"
+                "title": "Puskesmas Pembantu",
+                "description": "<p><strong>Puskesmas Pembantu</strong></p><hr> <img class=\"mx-auto d-block\" width=\"200px\" src=\"https://via.placeholder.com/400x200\" alt=\"pecatu\"> <p class=\"mb-0\">Memiliki 1 Unit Ambulance</p><p class=\"m-0\">Pelayanan Imunisasi Balita</p><p class=\"mt-0\">Pemeriksaan ibu hamil setiap hari jumat</p> <a target=\"_blank\" href=\"https://goo.gl/maps/wtJNtSigdJ2uQsUV8\" class=\"btn btn-primary btn-sm btn-block\">Lokasi</a>"
             },
             "geometry": {
                 "type": "Point",
@@ -15,8 +15,8 @@
         {
             "type": "Feature",
             "properties": {
-                "title": "OMSA MEDIC PECATU",
-                "description": "<p><strong>OMSA MEDIC PECATU</strong></p><hr> <img class=\"mx-auto d-block\" width=\"200px\" src=\"https://via.placeholder.com/400x200\" alt=\"pecatu\"> <p class=\"mb-0\">Memiliki 1 Unit Ambulance</p><p class=\"m-0\">Pelayanan Imunisasi Balita</p><p class=\"mt-0\">Pemeriksaan ibu hamil setiap hari jumat</p> <a target=\"_blank\" href=\"https://goo.gl/maps/xq6J7mT1GVunweJh7\" class=\"btn btn-primary btn-sm btn-block\">Lokasi</a>"
+                "title": "OMSA MEDIC",
+                "description": "<p><strong>OMSA MEDIC PECATU</strong></p><hr> <img class=\"mx-auto d-block\" width=\"200px\" src=\"https://via.placeholder.com/400x200\" alt=\"pecatu\"> <p class=\"mb-0\">Praktek Dokter Umum</p><p class=\"m-0\">Rapid Test dan SWAB Test Covid-19</p><p class=\"mt-0\">Melayani BPJS</p> <a target=\"_blank\" href=\"https://goo.gl/maps/xq6J7mT1GVunweJh7\" class=\"btn btn-primary btn-sm btn-block\">Lokasi</a>"
             },
             "geometry": {
                 "type": "Point",
