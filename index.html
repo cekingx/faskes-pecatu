@@ -20,7 +20,7 @@
 
     #map {
       position: absolute;
-      top: 10px;
+      top: 0;
       bottom: 0;
       width: 100%;
     }
@@ -39,7 +39,7 @@
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [115.115838, -8.8308757],
+      center: [115.1559435, -8.8156033],
       zoom: 13
     });
 
@@ -71,7 +71,7 @@
         })
       });
 
-      map.loadImage('cat.png', function(error, image) {
+      map.loadImage('medical-icon-32.png', function(error, image) {
         if(error) throw error;
         map.addImage('marker', image);
       })
@@ -88,11 +88,11 @@
           'source': 'faskes',
           'layout': {
             'icon-image': 'marker',
-            'icon-size': 0.045,
+            'icon-size': 0.7,
             'icon-allow-overlap': true,
             'text-field': '{title}',
             'text-size': 11,
-            'text-offset': [0, 1.5]
+            'text-offset': [0, 1.7]
           },
           'paint': {
             'text-color': '#202',
